@@ -6,6 +6,10 @@ const defineUser = require('./common/models/User');
 
 const bookRoutes = require('./routes/bookRoutes');
 const User = defineUser(sequelize);
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./swagger');
+
+app.use('/book-api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 
 sequelize.sync();
